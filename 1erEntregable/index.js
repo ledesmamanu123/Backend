@@ -4,7 +4,12 @@ class ProductManager {
     }
     //Metodo para agregar productos
     addProducts = ({title, description, price, thumbnail, code, stock})=>{ //Desestructuramos el objeto que nos llega con {}.
-
+        //Validamos que el code sea distinto
+        if (this.products.find(product => product.code === code)){
+            console.log("El producto ya existe")
+            return null;
+        }
+        //Validamos que todos los campos esten completos
         if (!title||!description||!price||!thumbnail||!code||!stock){
             console.log("Complete todos los campos")
             return null;
@@ -17,6 +22,7 @@ class ProductManager {
             code, 
             stock
         }
+        //Agregamos un ID al producto
         if (this.products.length===0){//No hay productos
             product.id = 1;
         }else{//Ya hay productos
@@ -51,7 +57,7 @@ const product1 = {
     description: "Celular gama-media", 
     price: 70000, 
     thumbnail :"#", 
-    code: 001, 
+    code: '001', 
     stock:3
 }
 const product2 = {
@@ -59,11 +65,20 @@ const product2 = {
     description: "Celular gama-media baja", 
     price: 20000, 
     thumbnail :"#", 
-    code: 002, 
+    code: '002', 
     stock:1
 }
 
+const product3 = {
+    title: "Motorola G8", 
+    description: "Celular gama-media baja", 
+    price: 21000, 
+    thumbnail :"#", 
+    code: '001', 
+    stock:1
+}
 productManager.addProducts(product1);
 productManager.addProducts(product2);
+productManager.addProducts(product3);
 
-console.log(productManager.getProductById(3))
+console.log(productManager.getProducts())
