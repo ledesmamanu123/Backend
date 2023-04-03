@@ -1,0 +1,24 @@
+----------- Class -----------
+
+Para que sirve? Mejor pongamos un ejemplo para que sea más intuitivo.
+
+Si nosotros necesitamos impartir una Curso de Finanzas, donde en ese curso, abran clases, estas clases
+van a estar dadas en el mismo horario, día, duración, etc. Bueno, podemos entender una Class, como 
+un tipo de plantilla default que vamos a usar para crear estas clases de mi curso. Siempre con los 
+mismos horarios, dias, duración y lo que creamos conveniente.
+
+Vamos a utilizar una Class, donde tenga formas y metodos pre-definidos para así lograr crear objetos (en este ej: las clases)
+de forma que, si necesitamos 80 objetos, lo hagamos de forma automática.
+
+
+Código: 
+
+//Forma de definir la Class, el nombre siempre empieza con Mayús
+class Cursos {
+	//Primero hay que definir el constructor de la clase
+	constructor(titulo, dificultad){
+		
+		
+	}	
+
+}
