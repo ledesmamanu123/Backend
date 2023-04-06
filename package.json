@@ -17,5 +17,8 @@
     "url": "https://github.com/ledesmamanu123/Backend/issues"
   },
   "homepage": "https://github.com/ledesmamanu123/Backend#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
 }
