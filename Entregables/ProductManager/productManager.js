@@ -71,6 +71,10 @@ export default class ProductManager {
 
     deleteProduct = async (id) =>{
         const products = await this.getProducts();
-        
+        const productIndex = products.findIndex(prod => prod.id === id);
+        if(productIndex === -1){console.log("Product not found")}
+        const newProducts = products.filter(prod=>prod.id != id);
+        await fs.promises.writeFile(this.path, JSON.stringify(newProducts, null, '\t'));
+        console.log('Product deleted');
     }
 }

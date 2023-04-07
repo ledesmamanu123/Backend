@@ -29,8 +29,7 @@ const context = async () =>{
         code: '003', 
         stock:1
     }
-    // await productManager.addProducts(product1);
-    // await productManager.addProducts(product2);
+    // await productManager.addProducts(product);
     // await productManager.getProductById(4);
     //await productManager.updateProduct(1, 'price', 25000);
 }
