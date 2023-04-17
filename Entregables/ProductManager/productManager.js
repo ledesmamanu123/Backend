@@ -50,22 +50,29 @@ export default class ProductManager {
         const products = await this.getProducts();
         const productIndex = products.findIndex(product => product.id === newId) //Corroboramos que el producto exista en nuestro array mediante una condicion (en este caso, si el id del objeto del array que estamos iterando, es igual al id que nos mandan).
         if(productIndex === -1){ //Si la condicion no se cumple, hacer lo siguiente
-            return console.log("Not Found");
+            console.log("Not Found");
+            console.log(newId)
         }
         //Si llega acá, entonces el producto existe, entonces, devolver el producto
-        return console.log(products[productIndex]);
+        return products[productIndex];
 
     }
 
-    updateProduct = async (id, atribute, value) =>{
-        const products = await this.getProducts();
-        const productIndex = products.findIndex(prod => prod.id === id);
-        if(productIndex === -1){console.log("Product not found")}
-        const fileProduct = products[productIndex];
-        fileProduct[atribute] = value; //Le damos el nuevo valor al producto
-        products[productIndex] = fileProduct; //Lo insertamos dentro de nuestro array;
-        await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-        console.log('Product updated successful')
+    updateProduct = async (id, updatedFields) =>{
+        try {
+            const products = await this.getProducts();
+            const productIndex = products.findIndex(prod => prod.id === id);
+            if(productIndex === -1){console.log("Product not found")}
+
+            const productToUpdate = { ...products[productIndex], ...updatedFields };
+            products[productIndex] = productToUpdate;
+
+            await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+            console.log('Product updated successful')
+
+        } catch (error) {
+            console.error(error);
+        }
 
     }
 
@@ -73,8 +80,8 @@ export default class ProductManager {
         const products = await this.getProducts();
         const productIndex = products.findIndex(prod => prod.id === id);
         if(productIndex === -1){console.log("Product not found")}
-        const newProducts = products.filter(prod=>prod.id != id);
-        await fs.promises.writeFile(this.path, JSON.stringify(newProducts, null, '\t'));
+        products.splice(productIndex, 1);
+        await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
         console.log('Product deleted');
     }
 }

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ledesmamanu123/Backend#readme",
   "type": "module",
   "dependencies": {
+    "express": "^4.18.2",
     "moment": "^2.29.4"
   }
 }
