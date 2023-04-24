@@ -9,11 +9,17 @@ const router = Router();
 //METODO POST
 
 router.post('/', async (req,res)=>{
-    const newCart = req.body;
-    console.log(newCart)
-    await cartManager.newCart(newCart)
+    await cartManager.newCart()
     res.send({status:"Success", message:"Cart was created successfuly"})
 })
+router.post('/:cid/product/:pid', async (req,res)=>{
+    const cartId = req.params.cid;
+    const prodId = req.params.pid;
+    await cartManager.setProductToCart(parseInt(cartId),parseInt(prodId))
+    res.send({status:"Success", message:"Product added successfuly"})
+
+})
+
 
 //METODO GET
 router.get('/', async (req,res)=>{
