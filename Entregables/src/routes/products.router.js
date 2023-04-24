@@ -38,12 +38,29 @@ router.post('/', async (req, res)=>{
     const product = req.body;
     console.log(product)
 
-    //Acá preguntar por boolean
+    // //Acá preguntar por boolean
     if(!product.status){product.status = true;}
     
-    //Mandamos nuestro nuevo producto
+    // //Mandamos nuestro nuevo producto
     await productManager.addProducts(product)
+
+    res.send({status:"Success"})
 })
 
+//METODOS PUT
+router.put('/:pid', async (req,res)=>{
+    const idParam = req.params.pid;
+    const updatedFields = req.body;
+
+    await productManager.updateProduct(parseInt(idParam), updatedFields);
+    res.send({status:"Success Updated"})
+})
+
+//METODO DELETE
+router.delete('/:pid', async (req,res)=>{
+    const idParam = req.params.pid;
+    await productManager.deleteProduct(parseInt(idParam))
+    res.send({status:"Success Delete"})
+})
 
 export default router

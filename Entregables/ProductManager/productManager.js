@@ -28,7 +28,7 @@ export default class ProductManager {
             title, 
             description, 
             price, 
-            thumbnail, 
+            thumbnail:[], 
             code, 
             stock,
             status,
@@ -46,7 +46,7 @@ export default class ProductManager {
         console.log(`product was added successful`);
     }
 
-    //Método que me traiga un producto en especifico por el ID
+        //Método que me traiga un producto en especifico por el ID
     getProductById = async (newId) =>{
         const products = await this.getProducts();
         const productIndex = products.findIndex(product => product.id === newId) //Corroboramos que el producto exista en nuestro array mediante una condicion (en este caso, si el id del objeto del array que estamos iterando, es igual al id que nos mandan).
