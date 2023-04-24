@@ -43,7 +43,7 @@ export default class ProductManager {
         }
         products.push(product)
         await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-        console.log(`product was added successful`);
+        console.log(`product was added successfuly`);
     }
 
         //Método que me traiga un producto en especifico por el ID
@@ -69,7 +69,7 @@ export default class ProductManager {
             products[productIndex] = productToUpdate;
 
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-            console.log('Product updated successful')
+            console.log('Product updated successfuly')
 
         } catch (error) {
             console.error(error);

@@ -21,6 +21,15 @@ const context = async ()=>{
             code: "002",
             stock: 1,
             id: 2
+        },
+        {
+            title: "Motorola G6",
+            description: "Celular gama-media baja",
+            price: 20000,
+            thumbnail: "#",
+            code: "002",
+            stock: 1,
+            id: 3
         }
     ]
     await cartManager.newCart(products)
