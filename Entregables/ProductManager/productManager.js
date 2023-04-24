@@ -14,14 +14,13 @@ export default class ProductManager {
         }else return [];
     }
 
-    addProducts = async ({title, description, price, thumbnail, code, stock}) =>{ //Metodo para agregar productos
+    addProducts = async ({title, description, price, thumbnail, code, stock, status, category}) =>{ //Metodo para agregar productos
         const products = await this.getProducts();
-        console.log(products)
         if (products.find(product => product.code === code)){ //Validamos que el code sea distinto
             return console.log("El producto ya existe");
         }
         //Validamos que todos los campos esten completos
-        if (!title||!description||!price||!thumbnail||!code||!stock){
+        if (!title||!description||!price||!code||!stock||!category){
             return console.log("Complete todos los campos");
             
         }
@@ -31,7 +30,9 @@ export default class ProductManager {
             price, 
             thumbnail, 
             code, 
-            stock
+            stock,
+            status,
+            category
         }
         //Agregamos un ID al producto
         if (products.length===0){ //No hay productos

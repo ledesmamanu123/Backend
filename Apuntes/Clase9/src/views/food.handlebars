@@ -1,0 +1,14 @@
+<div>
+    {{#if food}}
+        <h1>Aqui la lista de comida</h1>
+        <ul>
+            {{#each food}}
+                <li><p>{{this.name}} : {{this.price}}</p></li>        
+            {{/each}}
+        </ul>
+    {{else}}
+        <h1>Aun no tengo comida para mostrar</h1>
+    {{/if}}
+</div>
+
+<script src="../public/js/food.js"></script>
