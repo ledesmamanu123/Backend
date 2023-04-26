@@ -1,0 +1,29 @@
+CUANDO QUEREMOS DEPLOYEAR, DEJAMOS EL SV ELIGA SU PORT
+
+Corroboramos que la computadora haya elegido un puerto, sino elegimos el 8080
+    const PORT = process.env.PORT||8080;
+
+EN MI PACKAGE.JSON, en la parte de scripts, agregamos:
+"scripts":{
+    "start":"node src/app.js",
+    "dev":"nodemon src/app.js",
+    ...
+}
+
+PARA QUE NUESTRO CÓDIGO CORRA EN GLITCH ()
+
+Le decimos a glicth que corra nuestro proyecto, al menos desde la version 14 para arriba.
+{
+"name": "curso-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines":{                       <<<<<<<<
+    "node":"14.x"
+  }
+}
+
+
+LUEGO IMPORTAMOS EL LINK DE NUESTRO GIT HUB
+
+Crear un repo nuevo para cada proyecto que contenga SRC/APP.JS
