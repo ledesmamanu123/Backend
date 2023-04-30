@@ -3,7 +3,7 @@ import crypto from 'crypto';
 
 export default class UserManager {
     constructor(){
-        this.path = './HandsOnLab/files/Users.json';
+        this.path = '../files/Users.json';
     }
     getUsers = async () =>{ 
         if(fs.existsSync(this.path)){
