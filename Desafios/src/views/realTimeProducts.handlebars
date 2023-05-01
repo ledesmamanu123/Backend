@@ -1,0 +1,27 @@
+<h1>Tiempo real de productos</h1>
+<p id="ProductsBox"></p>
+<div>
+    <h2>Agregar producto</h2>
+    <form action="/api/realtimeproducts" method="post" enctype="multipart/form-data">
+        <label>Titulo</label>
+        <input name="title">
+        <br>
+        <label>Descripcion</label>
+        <input name="description">
+        <br>
+        <label>Precio</label>
+        <input name="price">
+        <br>
+        <label>Código</label>
+        <input name="code">
+        <br>
+        <label>Categoria</label>
+        <input name="category">
+        <br>
+        <input type="submit">
+    
+    </form>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtimeproducts.js"></script>
