@@ -13,7 +13,8 @@ router.get('/',async (req,res)=>{
     const products = await productManager.getProducts();
 
     if(query != 'limit'){
-        res.send(products)
+        res.send({status:"Success", payload:products})
+        req.io.emit('ProductsExisting', products)
     } else if(queryValue > 0){
         const productsLimited = products.slice(0,queryValue)
         res.send(productsLimited);
@@ -35,7 +36,6 @@ router.get('/:pid', async (req,res)=>{
 router.post('/', async (req, res)=>{
     //Guardamos el producto que nos llega desde el body
     const product = req.body;
-    console.log(product)
     //Acá preguntar por boolean
     if(!product.status){product.status = true;}
     

@@ -33,14 +33,14 @@
 		"id": 3
 	},
 	{
-		"title": "Motorola G31",
+		"title": "Motorola E40",
 		"description": "Smartphone creado por Lenovo",
-		"price": 12000,
+		"price": 600,
 		"thumbnail": [],
-		"code": "003",
-		"stock": 4,
+		"code": "009",
+		"stock": 65,
 		"status": true,
 		"category": "Celulares",
-		"id": 4
+		"id": 5
 	}
 ]

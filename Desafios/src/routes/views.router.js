@@ -14,8 +14,6 @@ router.get('/form',(req,res)=>{
 })
 
 router.get('/realtimeproducts',async (req,res)=>{
-    const products = await productManager.getProducts();
-    req.io.emit('ProductsExisting',products)
     res.render('realTimeProducts')
 })
 
