@@ -41,7 +41,7 @@ socket.on('logs', data=>{ //Nos llega la data que mandamos del Back
     const logs = document.getElementById('logs')
     let message = "";
 
-    //La data que nos llega del front, le aplicamos una funcion a cada log
+    //La data que nos llega del back, le aplicamos una funcion a cada log
     data.forEach(log => {
         message+= `${log.user} dice: ${log.message} <br/>` //Creamos un string, concatenando el user, y el msg
     });

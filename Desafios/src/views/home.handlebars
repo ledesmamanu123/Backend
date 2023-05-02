@@ -1,7 +1,14 @@
 <div>
-    <h1>Productos disponibles</h1>
-    <p id="productBox"></p>
+    {{#if products}}
+        <h1>Productos disponibles</h1>
+        <ul>
+            {{#each products}}
+                <li><p>{{this.title}} : {{this.price}}</p></li>        
+            {{/each}}
+        </ul>
+    {{else}}
+        <h1>Aun no tengo productos para mostrar</h1>
+    {{/if}}
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
 <script src="/js/home.js"></script>

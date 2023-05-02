@@ -1,11 +1,25 @@
 <div>
-    <form action="/api" method="post" enctype="multipart/form-data">
-        <label for="">Nombre</label>
-        <input name="name">
-        <label for="">Especie</label>
-        <input name="especie">
-        <label for="">Imagen</label>
-        <input type="file" name="image">
+    <h2>Agregar producto</h2>
+    <form action="/api/products" method="post" enctype="multipart/form-data">
+        <label>Titulo</label>
+        <input name="title">
+        <br>
+        <label>Descripcion</label>
+        <input name="description">
+        <br>
+        <label>Precio</label>
+        <input name="price">
+        <br>
+        <label>Código</label>
+        <input name="code">
+        <br>
+        <label>Categoria</label>
+        <input name="category">
+        <br>
+        <label>Stock</label>
+        <input name="stock">
+        <br>
         <input type="submit">
+    
     </form>
 </div>

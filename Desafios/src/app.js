@@ -2,9 +2,10 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import { Server, Socket } from 'socket.io';
 
+import ProductsRouter from './routes/products.router.js';
+import CartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js'
-import realTimeProdRouter from './routes/realtimeproducts.router.js'
-import homeRouter from './routes/home.router.js'
+// import realTimeProdRouter from './routes/realtimeproducts.router.js'
 
 import __dirname from './utils.js';
 
@@ -19,17 +20,21 @@ app.use(express.static(`${__dirname}/public`))
 app.engine('handlebars', handlebars.engine())
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'handlebars')
-
-
-app.use('/', viewsRouter)
-app.use('/api/realtimeproducts', realTimeProdRouter)
-app.use('/home', homeRouter)
 app.use((req,res,next)=>{
     req.io = io;
     next();
 })
+
+
+app.use('/', viewsRouter)
+app.use('/api/products', ProductsRouter);
+app.use('/api/carts', CartsRouter);
+// app.use('/api/realtimeproducts', realTimeProdRouter)
+
 const io = new Server(server);
 
 io.on('connection',socket=>{
     console.log(`New socket connected`);
 })
+
+

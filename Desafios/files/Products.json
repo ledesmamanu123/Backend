@@ -1,0 +1,46 @@
+[
+	{
+		"title": "Joystick PS4",
+		"description": "Dispositivo para uso en PS4 y/o PC",
+		"price": 2000,
+		"thumbnail": [],
+		"code": "008",
+		"stock": 4,
+		"status": true,
+		"category": "Joysticks",
+		"id": 1
+	},
+	{
+		"title": "Motorola G60s",
+		"description": "Smartphone creado por Lenovo",
+		"price": 12000,
+		"thumbnail": [],
+		"code": "001",
+		"stock": 4,
+		"status": true,
+		"category": "Celulares",
+		"id": 2
+	},
+	{
+		"title": "Motorola G30",
+		"description": "Smartphone creado por Lenovo",
+		"price": 12000,
+		"thumbnail": [],
+		"code": "002",
+		"stock": 4,
+		"status": true,
+		"category": "Celulares",
+		"id": 3
+	},
+	{
+		"title": "Motorola G31",
+		"description": "Smartphone creado por Lenovo",
+		"price": 12000,
+		"thumbnail": [],
+		"code": "003",
+		"stock": 4,
+		"status": true,
+		"category": "Celulares",
+		"id": 4
+	}
+]
