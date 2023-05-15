@@ -6,8 +6,22 @@ const router = Router();
 const companiesService = new CompaniesManager();
 
 router.get('/', async (req, res) =>{
-    const companies = companiesService.getCompanies();
+    const companies = await companiesService.getCompanies();
     res.send({status:"Success", payload: companies})
+})
+
+router.post('/', async (req, res)=>{
+    const {name, legal_name, plan, industry, address} = req.body;
+    if(!name||!legal_name||!industry||!address) return res.status(400).send({status:"error", error:"Incompleted values"})
+    const company = {
+        name,
+        legal_name,
+        plan,
+        industry,
+        address
+    }
+    const result = await companiesService.createCompany(company)
+    res.sendStatus(201);
 })
 
 router.get('/:cid', async (req, res)=>{
@@ -42,7 +56,7 @@ router.put('/:cid', async (req,res)=>{
 router.delete('/:cid', async(req,res)=>{
     const { cid } = req.params;
     await companiesService.deleteCompany(cid)
-    res.sendStatus(201);
+    res.sendStatus(201)
 })
 
 
