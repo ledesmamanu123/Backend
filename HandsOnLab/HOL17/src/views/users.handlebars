@@ -1,0 +1,15 @@
+<h1>Hola USERS</h1>
+{{#each users}}
+    <p>{{this.first_name}}</p>
+    <p>{{this.last_name}}</p>
+    <br>
+{{/each}}
+{{#if hasPrevPage}}
+    {{!-- Si existe hasPrevPage, entonces, ir a la direccion base, y mandar por query 'page=prevPage', donde prevPage es el numero de la pagina anterior --}}
+    <a href="/?page={{prevPage}}"><button>Anterior</button></a>
+{{/if}}
+    <p>{{page}}</p>
+{{#if hasPrevNext}}
+    {{!-- Si existe hasPrevNext, entonces, ir a la direccion base, y mandar por query 'page=prevNext', donde prevNext es el numero de la pagina siguiente --}}
+    <a href="/?page={{prevNext}}"><button>Siguiente</button></a>
+{{/if}}
