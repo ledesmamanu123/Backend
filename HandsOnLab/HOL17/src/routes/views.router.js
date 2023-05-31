@@ -1,15 +1,15 @@
 import { Router} from "express";
-import usersModel from "../dao/mongo/models/Users.js";
+import usersModel from "../dao/mongo/models/User.js";
 
 const router = Router();
 
 router.get('/', async(req, res)=>{
     //Querys
-    const {page = 1} = req.query; //Extrae el query de req.query, ysi no existe, entonces igualalo a 1 
-    //const result = await usersModel.paginate({},{limit:10, lean:true})
-    const {docs, hasPrevPage, hasNextPage, prevPage, nextPage, ...rest} = await usersModel.paginate({},{page, limit:10, lean:true}) //Desestructuracion
+    const {page = 1, limit = 10, group = '1A', sort} = req.query; //Extrae la page de req.query, ysi no existe, entonces igualalo a 1 
+    const {docs, hasPrevPage, hasNextPage, prevPage, nextPage, ...rest} = await usersModel.paginate({group},{page, limit,  lean:true}) //Desestructuracion
     const users = docs;
-    res.render('users', {users, hasPrevPage, hasNextPage, nextPage, prevPage, page:rest.page})
+    console.log(limit)
+    res.render('users', {users, hasPrevPage, hasNextPage, nextPage, prevPage, page:rest.page, limit:rest.limit})
     // console.log(result)
     // {
     //     docs: [#ACÁ ESTAN LOS USUARIOS],
