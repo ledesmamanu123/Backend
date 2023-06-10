@@ -1,16 +1,17 @@
 import { Router } from "express";
+import { privacy } from "../../middlewares/auth.js";
 
 const router = Router();
 
-router.get('/register', (req,res)=>{
+router.get('/register',privacy('PRIVATE'),(req,res)=>{
     res.render('register')
 })
 
-router.get('/login',(req,res)=>{
+router.get('/login',privacy('NO_AUTHENTICATED'),(req,res)=>{
     res.render('login')
 })
 
-router.get('/profile',(req,res)=>{
+router.get('/profile',privacy('NO_AUTHENTICATED'),(req,res)=>{
     res.render('profile', {
         user: req.session.user
     })
