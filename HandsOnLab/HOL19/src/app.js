@@ -5,10 +5,12 @@ import MongoStore from 'connect-mongo';
 import mongoose from 'mongoose'; 
 import handlebars from 'express-handlebars';
 import __dirname from './utils.js'
+import initializePassport from '../config/passport.config.js';
 
 
 import viewsRouter from './routes/views.router.js';
 import sessionsRouter from './routes/sessions.router.js'
+import passport from 'passport';
 // const fileStorage = FileStore(session)
 const app = express();
 
@@ -33,6 +35,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+app.use(passport.initialize()); //Inicializamos passport
+initializePassport(); //Inicializamos nuestras estrategias
+
 
 app.use('/', viewsRouter)
 app.use('/api/sessions', sessionsRouter)
