@@ -5,7 +5,7 @@ import passport from "passport";
 
 const router = Router();
 
-router.post('/register',passport.authenticate('register', {failureRedirect: 'api/session/registerFail'}), async (req,res)=>{ //en passport.authenticate('nombre de la estrategia', {Si hay un error, failureRedirect nos redirije a donde le indiquemos})
+router.post('/register',passport.authenticate('register', {failureRedirect: 'api/sessions/registerFail'}), async (req,res)=>{ //en passport.authenticate('nombre de la estrategia', {Si hay un error, failureRedirect nos redirije a donde le indiquemos})
     res.send({status:'Success', message:'Register completed'})
 })
 
@@ -16,8 +16,8 @@ router.get('/registerFail', (req,res)=>{
     res.status(400).send({status:'error', error: req.session.messages})
 })
 
-router.post('/login',passport.authenticate('login', {failureRedirect:'/api/session/loginFail'}), async (req,res)=>{
-    console.log(req.user)
+router.post('/login',passport.authenticate('login', {failureRedirect:'/api/sessions/loginFail'}), async (req,res)=>{
+    console.log("User de login: "+JSON.stringify(req.user))
     req.session.user = {
         name: req.user.name,
         email: req.user.email,
@@ -25,11 +25,11 @@ router.post('/login',passport.authenticate('login', {failureRedirect:'/api/sessi
         role: req.user.role
 
     }
-    res.sendStatus(200)
+    return res.status(200)
 }) 
 
-router.get('loginFail', (req,res)=>{
-    console.log(req.session.messages)
+router.get('/loginFail', (req,res)=>{
+    console.log("Erorres de sesion en login: "+req.session.messages)
     res.status(400).send({status:'error', error: req.session.messages})
 })
 export default router;

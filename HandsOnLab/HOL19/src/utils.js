@@ -9,7 +9,7 @@ export const createHash = async (password) =>{
 }
 
 export const validatePassword = async (password, hashedPass) =>{
-    bcrypt.compare(password, hashedPass) //Comparamos y verificamos q la contraseña sea correcta.
+    return bcrypt.compare(password, hashedPass) //Comparamos y verificamos q la contraseña sea correcta.
 }
 
 const __filename = fileURLToPath(import.meta.url);

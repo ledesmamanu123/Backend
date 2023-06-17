@@ -17,5 +17,5 @@ form.addEventListener('submit', async (event)=>{
         //Lo redirijo a login
         window.location.replace('/login')
     }
-    console.log(responseData)
+    console.log("Respuesta que nos llega al register: "+responseData)
 })

@@ -10,7 +10,7 @@ const initializePassport = () =>{ //Creamos el metodo para inicializar cualquier
 
     //Passport va a tomar nuestras estrategias como si fuera una mas de su libreria.
                 //('nombreDeLaEstrategia', La estrategia)
-    passport.use('register', new LocalStrategy({passReqToCallback:true, usernameField}, async(req,email,password,done)=>{
+    passport.use('register', new LocalStrategy({passReqToCallback:true, usernameField:'email'}, async(req,email,password,done)=>{
         //passReqToCallback:true => si esta en false, significa que va a desechar todo lo que nos traiga req. Como nosotros no trabajamos con username, sino con email. vamos a dejarlo en true, asi podemos traer el email
         //usernameField: 'email' => significa que, yo se que estas esperando un username, asi que utiliza el 'email' que te llega del formulario como tu campo username.
         //Con esa configuracion, puedo cambiar la funcion y poner email en vez de username asi estaba antes(async(req,username,password,done))
@@ -41,9 +41,9 @@ const initializePassport = () =>{ //Creamos el metodo para inicializar cualquier
         done(null,result)
     }))
 
-    passport.use('login', {}, new LocalStrategy({usernameField:'email'}, async(email,password,done)=>{
+    passport.use('login',new LocalStrategy({usernameField:'email'}, async(email,password,done)=>{
         //Passport solo debe devolver al user, no es responsable de la sesion
-
+        console.log("passport Login: email: "+email+" y pass: "+password)
         //Login de admin
         if(email === 'admin@admin.com'&& password ==='123'){
             //Inicializo el user del admin
@@ -55,15 +55,18 @@ const initializePassport = () =>{ //Creamos el metodo para inicializar cualquier
         }
         let user;
         user = await userModel.findOne({email}); //Verificamos si el email existe
-        if(!user) return done(null,false,{message:'Incorrect email'})
-    
+        console.log("el email existe?")
+        if(!user) return done(null,false,{messages:'Incorrect email'})
+        console.log("si existe el mail")
         const isValidPass = await validatePassword(password, user.password); //Verificamos la password
-        if(!isValidPass) return done(null,false,{message:'Invalid password'})
+        console.log("la password es correcta?")
+        if(!isValidPass) return done(null,false,{messages:'Invalid password'})
+        console.log("La password si es correcta")
     
         //Todo correcto,DEVOLVEMOS EL USER, para q session le cree su session
         user={
             id:user._id,
-            name: `${first_name} ${last_name}`,
+            name: `${user.first_name} ${user.last_name}`,
             email: user.email,
             role:user.role
         }
