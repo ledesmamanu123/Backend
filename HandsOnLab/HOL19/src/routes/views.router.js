@@ -16,4 +16,7 @@ router.get('/profile',privacy('PRIVATE'),(req,res)=>{
         user: req.session.user
     })
 })
+router.get('/restoredPassword', privacy('NO_AUTHENTICATED'),(req,res)=>{
+    res.render('restoredPass')
+})
 export default router;
