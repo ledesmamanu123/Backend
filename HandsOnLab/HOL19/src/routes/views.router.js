@@ -19,4 +19,8 @@ router.get('/profile',privacy('PRIVATE'),(req,res)=>{
 router.get('/restoredPassword', privacy('NO_AUTHENTICATED'),(req,res)=>{
     res.render('restoredPass')
 })
+
+router.get('/',(req,res)=>{
+    res.render('jwtProfile')
+})
 export default router;

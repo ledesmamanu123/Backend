@@ -5,7 +5,7 @@ form.addEventListener('submit', async (event)=>{
     const data = new FormData(form); //Convertimos la info que nos llega, en data que si podamos usar
     const obj = {}
     data.forEach((value,key)=>(obj[key]=value))
-    const response = await fetch('/api/sessions/login', {
+    const response = await fetch('/api/sessions/jwtLogin', {
         method:'POST',
         body:JSON.stringify(obj),
         headers:{
@@ -13,5 +13,7 @@ form.addEventListener('submit', async (event)=>{
         }
     })
     const responseData = await response.json(); 
-    console.log("Respuesta q nos llega al login: "+responseData)
+    if(responseData.status === "Success"){
+        localStorage.setItem('authToken', responseData.accessToken)
+    }
 })
