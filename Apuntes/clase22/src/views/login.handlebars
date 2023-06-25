@@ -1,0 +1,16 @@
+<h1>Ahora, logueate</h1>
+    <form id="loginForm">
+
+        <label for="">Email</label>
+        <input name="email">
+
+        <label for="">Contraseña</label>
+        <input type="password" name="password">
+
+        <input type="submit">
+    </form>
+    {{!-- 1ro Mandamos la peticion a api/sesion --}}
+    <a href="/api/sessions/github"><button>Github</button></a>
+    <a href="/restoredPassword">Restablece tu contraseña</a>
+
+<script src="/js/login.js"></script>
